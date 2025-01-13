@@ -1,1 +1,13 @@
-spring.application.name=smart-community
+spring:
+  application:
+    name: smart-community
+  profiles:
+    default: dev
+  jpa:
+    generate-ddl: true
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  output:
+    ansi:
+      enabled: always
