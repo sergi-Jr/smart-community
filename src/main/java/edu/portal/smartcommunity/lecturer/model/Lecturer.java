@@ -12,8 +12,11 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.proxy.HibernateProxy;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Objects;
 import java.util.UUID;
@@ -41,6 +44,12 @@ public class Lecturer implements BaseEntity {
     private String email;
 
     private Date birthDay;
+
+    @CreatedDate
+    private Timestamp createdAt;
+
+    @LastModifiedDate
+    private Timestamp updatedAt;
 
     @Override
     public final boolean equals(Object o) {
