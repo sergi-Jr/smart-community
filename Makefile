@@ -1,6 +1,6 @@
 setup:
 
-	./gradlew wrapper --gradle-version 8.10
+	./gradlew wrapper --gradle-version 8.11
 	./gradlew build
 
 clean:
