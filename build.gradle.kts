@@ -55,6 +55,7 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter:5.11.4")
     testImplementation("net.javacrumbs.json-unit:json-unit-assertj:3.2.7")
 
+    testCompileOnly("org.projectlombok:lombok")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
     testAnnotationProcessor("org.projectlombok:lombok")
