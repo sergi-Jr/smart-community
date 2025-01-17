@@ -15,15 +15,16 @@ import org.hibernate.proxy.HibernateProxy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.sql.Timestamp;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Objects;
 import java.util.UUID;
 
+@Getter
 @Entity
 @EntityListeners(AuditingEntityListener.class)
-@Getter
 @Setter
 @Table(name = "lecturer")
 @ToString(onlyExplicitlyIncluded = true)
@@ -33,17 +34,23 @@ public class Lecturer implements BaseEntity {
     private UUID id;
 
     @Column(nullable = false)
+    @ToString.Include
     private String lastName;
 
+    @ToString.Include
     private String firstName;
 
     @Column(nullable = false)
+    @ToString.Include
     private String phoneNumber;
 
     @Column(nullable = false)
+    @ToString.Include
     private String email;
 
-    private Date birthDay;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @ToString.Include
+    private LocalDate birthDate;
 
     @CreatedDate
     private Timestamp createdAt;
@@ -78,4 +85,5 @@ public class Lecturer implements BaseEntity {
                 ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass().hashCode()
                 : getClass().hashCode();
     }
+
 }
