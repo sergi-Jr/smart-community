@@ -21,5 +21,7 @@ public abstract class LecturerMapper {
 
     public abstract LecturerDTO map(Lecturer model);
 
+    public abstract LecturerCreateDTO mapToCreateDTO(Lecturer model);
+
     public abstract void update(LecturerUpdateDTO updateDTO, @MappingTarget Lecturer model);
 }

@@ -3,7 +3,7 @@ package edu.portal.smartcommunity.lecturer.dto;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.UUID;
 
 @Getter
@@ -14,5 +14,5 @@ public class LecturerDTO {
     private String firstName;
     private String phoneNumber;
     private String email;
-    private Date birthDay;
+    private LocalDate birthDate;
 }

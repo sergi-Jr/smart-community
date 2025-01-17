@@ -4,35 +4,38 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Getter
 @Setter
 public class LecturerUpdateDTO {
-    @NotBlank
-    @NotNull
-    @Size(max = 32)
-    private String lastName;
+    @NotBlank(message = "Empty field")
+    @NotNull(message = "Null field")
+    @Size(max = 32, message = "Wrong size in lastname")
+    private JsonNullable<String> lastName;
 
+    @NotBlank(message = "Empty field")
+    @Size(max = 32, message = "Wrong size in firstname")
     private JsonNullable<String> firstName;
 
-    @NotEmpty
-    @NotNull
-    @Pattern(regexp = "(^8|7|\\+7)((\\d{10})|(\\s\\(\\d{3}\\)\\s\\d{3}\\s\\d{2}\\s\\d{2}))\n")
-    private String phoneNumber;
+    @NotEmpty(message = "Empty field")
+    @NotNull(message = "Null field")
+    //@Pattern(regexp = "(^8|7|\\+7)((\\d{10})|(\\s\\(\\d{3}\\)\\s\\d{3}\\s\\d{2}\\s\\d{2}))\n",\
+    // message = "Wrong phone")
+    private JsonNullable<String> phoneNumber;
 
-    @NotEmpty
-    @NotNull
+    @NotEmpty(message = "Empty field")
+    @NotNull(message = "Null field")
     @Email
-    @Pattern(regexp =
-            "^[a-zA-Z0-9_+&*-] + (?:\\\\.[a-zA-Z0-9_+&*-] + )*@(?:[a-zA-Z0-9-]+\\\\.) + [a-zA-Z]{2,7}")
-    private String email;
+    //@Pattern(regexp =
+      //      "^[a-zA-Z0-9_+&*-] + (?:\\\\.[a-zA-Z0-9_+&*-] + )*@(?:[a-zA-Z0-9-]+\\\\.) + [a-zA-Z]{2,7}",
+    //      message = "Wrong email")
+    private JsonNullable<String> email;
 
-    private JsonNullable<Date> birthDay;
+    private JsonNullable<LocalDate> birthDate;
 }
